@@ -20,7 +20,7 @@ export default class App {
         this.canvas = document.querySelector('#mosaic')
         this.context = this.canvas.getContext('2d')
 
-        // this decides the number of dimensions in the tensor (10x10 = 100 dimensions)
+        //The number of dimensions in the tensor (10x10 = 100 dimensions)
         this.numpixels = 10
 
         this.width// 340 
@@ -78,18 +78,19 @@ export default class App {
         this.learned.src = this.images[label] // label i 
     }
 
+    //Loop
     drawMosaic() {
         // drawing the video very small causes pixelation. then blow up the canvas image itself
         this.context.drawImage(this.video, 0, 0, this.numpixels, this.numpixels)
         this.context.drawImage(this.canvas, 0, 0, this.numpixels, this.numpixels, 0, 0, this.width, this.height)
 
-        // als label aan staat dan meteen checken welke class dit is
+        // Als label aan staat, checken welke class het is
         if (this.labelcam) this.labelWebcam()
     
         // draw 60 times / second
         // requestAnimationFrame(()=>this.drawMosaic())
 
-        // or draw only 10 times/second
+        // Call/draw this function 10 times/second 
         setTimeout(() => this.drawMosaic(), 100)
     }
 
