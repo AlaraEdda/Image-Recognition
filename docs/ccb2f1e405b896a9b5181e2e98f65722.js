@@ -200,13 +200,15 @@ class Util {
         return (r << 16 | g << 8 | b).toString(16);
     }
 }
+
+//Dit zijn de foto's die laten zien worden na dat je op start hebt gedrukt
 exports.default = Util;
 },{}],11:[function(require,module,exports) {
-module.exports="e0f147ae0740e9ee581f746610393b18.png";
+module.exports="smileyface.png";
 },{}],12:[function(require,module,exports) {
-module.exports="944602bcc8f15f1faaad3db9eb0277d2.png";
+module.exports="vrolijkVentje.png";
 },{}],13:[function(require,module,exports) {
-module.exports="c2367dbc18aacb29f27206b34884b419.png";
+module.exports="geelVentje.png";
 },{}],14:[function(require,module,exports) {
 'use strict';
 
