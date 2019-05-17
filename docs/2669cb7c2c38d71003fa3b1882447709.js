@@ -260,4 +260,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},[23])
-//# sourceMappingURL=2669cb7c2c38d71003fa3b1882447709.map
+//# sourceMappingURL=style.map
