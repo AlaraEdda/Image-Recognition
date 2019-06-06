@@ -6,12 +6,13 @@ import Util from "./util"
 import image0 from '../images/image0.png';
 import image1 from '../images/image1.png';
 import image2 from '../images/image2.png';
+import image3 from '../images/image3.png';
 
 export default class App {
     constructor() {
-        this.machine = new KNear(3)
+        this.machine = new KNear(4)
 
-        this.images = [image0, image1, image2]
+        this.images = [image0, image1, image2, image3]
 
         this.labelcam = false
 
