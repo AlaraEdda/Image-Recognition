@@ -23,7 +23,7 @@ export default class App {
         //The number of dimensions in the tensor (10x10 = 100 dimensions)
         this.numpixels = 10
 
-        this.width// 340 
+        this.width// 340
         this.height// 255
         this.intervalid
         this.webcamData
@@ -51,7 +51,7 @@ export default class App {
         this.drawMosaic()
 
         // create tensor data every second
-        this.intervalid = setInterval(() => this.displayPixelData(), 1000)  
+        this.intervalid = setInterval(() => this.displayPixelData(), 1000)
     }
 
     initButtons() {
@@ -59,7 +59,7 @@ export default class App {
         for (let i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", (e) => this.recordData(e, i))
         }
-        document.getElementById("train").addEventListener("click", (e) => {this.labelcam = true})
+        document.getElementById("train").addEventListener("click", (e) => { this.labelcam = true })
     }
 
     recordData(e, i) {
@@ -86,7 +86,7 @@ export default class App {
 
         // Als label aan staat, checken welke class het is
         if (this.labelcam) this.labelWebcam()
-    
+
         // draw 60 times / second
         // requestAnimationFrame(()=>this.drawMosaic())
 
@@ -97,37 +97,37 @@ export default class App {
     //
     // get a tensor with 100 dimensions, do this every second
     //
-    displayPixelData(){
-        
+    displayPixelData() {
+
         this.webcamData = []
 
         for (let pos = 0; pos < this.numpixels * this.numpixels; pos++) {
             let col = pos % this.numpixels
             let row = Math.floor(pos / this.numpixels)
-            
-            let x = col * (this.width / this.numpixels) 
+
+            let x = col * (this.width / this.numpixels)
             let y = row * (this.height / this.numpixels)
 
             // colorsample location in the middle of the rectangle
-            let p = this.context.getImageData(x + this.width / 20, y + this.height / 20, 1, 1).data  
+            let p = this.context.getImageData(x + this.width / 20, y + this.height / 20, 1, 1).data
 
             // Here we convert three R G B values to one decimal using bit shifting. 
             // We need one decimal so that kNear can more easily compare different values
             // console.log("rgb is " + p[0] + "," + p[1] + "," + p[2]);
-            let decimalColor = Util.rgbToDecimal(p[0],p[1],p[2])
+            let decimalColor = Util.rgbToDecimal(p[0], p[1], p[2])
             this.webcamData.push(decimalColor)
         }
 
     }
 
-    initVideoStream(){
+    initVideoStream() {
         // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
         if (navigator.mediaDevices) {
             navigator.mediaDevices.getUserMedia({ video: true })
                 // permission granted:
                 .then((stream) => {
                     this.video.srcObject = stream;
-                    this.video.addEventListener("playing", ()=>this.initSettings())
+                    this.video.addEventListener("playing", () => this.initSettings())
                     //video.addEventListener('click', takeSnapshot)
                 })
                 // permission denied:
