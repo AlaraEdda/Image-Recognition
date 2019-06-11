@@ -29,6 +29,7 @@ export default class App {
         this.intervalid
         this.webcamData
         this.trainingdata = []
+        this.cameraId
 
         // start the stream
         this.initVideoStream()
@@ -129,8 +130,44 @@ export default class App {
 
     initVideoStream() {
         // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+            console.log("enumerateDevices() not supported.");
+            return;
+        }
+
+
+
+        // List cameras and microphones.
+        let _this = this
+
+        navigator.mediaDevices.enumerateDevices()
+            .then(function (devices) {
+                let cameraSelect = document.getElementById('camera_option')
+                cameraSelect.addEventListener('change', function (e) {
+                    this.cameraId = cameraSelect.value
+                    console.log(cameraSelect.value)
+                })
+                _this.cameraId = cameraSelect.value
+
+                devices.forEach(function (device) {
+                    if (device.kind === 'videoinput') {
+                        let option = document.createElement('option')
+                        option.innerHTML = device.label
+                        option.value = device.deviceId
+
+                        cameraSelect.add(option)
+                    }
+
+                });
+            })
+            .catch(function (err) {
+                console.log(err.name + ": " + err.message)
+            })
+
+
         if (navigator.mediaDevices) {
-            navigator.mediaDevices.getUserMedia({ video: true })
+            navigator.mediaDevices.getUserMedia({ video: { deviceId: () => this.cameraId } })
                 // permission granted:
                 .then((stream) => {
                     this.video.srcObject = stream;
