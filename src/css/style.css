@@ -36,8 +36,7 @@ container {
 }
 
 container img {
-    width:auto;
-    height:105px;
+    width: 100%;
 }
 
 .flex-item {
@@ -70,8 +69,7 @@ data {
 }
 
 data img {
-    width:110px;
-    height:auto;
+    width: 100%;
 }
 
 button {
