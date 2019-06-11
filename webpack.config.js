@@ -8,8 +8,9 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.png$/, use: 'url-loader?mimetype=image/png' },
+            { test: /\.jpeg$/, use: 'url-loader?mimetype=image/jpeg' },
         ]
-    }
+    },
+    mode: 'development'
 };
 

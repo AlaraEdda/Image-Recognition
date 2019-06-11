@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SOVIE Sign detection</title>
+  <meta name="theme-color" content="#F5870A">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../src/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <h1><i class="fas fa-arrow-left"></i> Meaning</h1>
+  </header>
+  <main>
+    <div>
+      <video autoplay=""></video>
+      <canvas id="mosaic"></canvas>
+      <img id="learned" src="trainingData.png">
+    </div>
+
+    <div>
+      <h4>Recording</h4>
+      <p>Click the button to associate the current image with the class. Adding more images per class will make image
+        recognition more precise.</p>
+    </div>
+
+
+
+    <div>
+      <button id="train">START</button>
+    </div>
+  </main>
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>

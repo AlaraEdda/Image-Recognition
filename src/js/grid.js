@@ -3,10 +3,10 @@
 import KNear from './knear'
 import Util from "./util"
 
-import image0 from '../images/image0.png';
-import image1 from '../images/image1.png';
-import image2 from '../images/image2.png';
-import image3 from '../images/image3.png';
+import image0 from '../images/sign0.jpeg';
+import image1 from '../images/sign1.jpeg';
+import image2 from '../images/sign2.jpeg';
+import image3 from '../images/sign3.jpeg';
 
 export default class App {
     constructor() {
@@ -22,12 +22,13 @@ export default class App {
         this.context = this.canvas.getContext('2d')
 
         //The number of dimensions in the tensor (10x10 = 100 dimensions)
-        this.numpixels = 10
+        this.numpixels = 15
 
         this.width// 340
         this.height// 255
         this.intervalid
         this.webcamData
+        this.trainingdata = []
 
         // start the stream
         this.initVideoStream()
@@ -60,12 +61,17 @@ export default class App {
         for (let i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", (e) => this.recordData(e, i))
         }
-        document.getElementById("train").addEventListener("click", (e) => { this.labelcam = true })
+        document.getElementById("train").addEventListener("click", (e) => {
+            this.labelcam = true
+            console.log(JSON.stringify(this.trainingdata))
+        })
     }
 
     recordData(e, i) {
         //console.log("adding vector to " + i + "   entries:" + this.webcamData.length)
         this.machine.learn(this.webcamData, i) // use i as a label ?
+
+        this.trainingdata.push({ data: this.webcamData, label: i })
 
         // add a nice little thumbnail to see what we trained
         let img = document.createElement('img')
