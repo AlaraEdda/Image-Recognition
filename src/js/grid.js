@@ -165,7 +165,7 @@ export default class App {
         cameraSelect.addEventListener('change', function (e) {
             this.cameraId = cameraSelect.value
             console.log(cameraSelect.value)
-            this.startCamera()
+            _this.startCamera()
         })
 
         this.startCamera()
