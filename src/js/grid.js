@@ -143,11 +143,7 @@ export default class App {
 
         navigator.mediaDevices.enumerateDevices()
             .then(function (devices) {
-                let cameraSelect = document.getElementById('camera_option')
-                cameraSelect.addEventListener('change', function (e) {
-                    this.cameraId = cameraSelect.value
-                    console.log(cameraSelect.value)
-                })
+
                 _this.cameraId = cameraSelect.value
 
                 devices.forEach(function (device) {
@@ -165,7 +161,20 @@ export default class App {
                 console.log(err.name + ": " + err.message)
             })
 
+        let cameraSelect = document.getElementById('camera_option')
+        cameraSelect.addEventListener('change', function (e) {
+            this.cameraId = cameraSelect.value
+            console.log(cameraSelect.value)
+            this.startCamera()
+        })
 
+        this.startCamera()
+
+
+
+    }
+
+    startCamera() {
         if (navigator.mediaDevices) {
             navigator.mediaDevices.getUserMedia({ video: { deviceId: () => this.cameraId } })
                 // permission granted:

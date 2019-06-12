@@ -5,7 +5,7 @@ module.exports = {
     entry: ['./src/js/grid.js'],
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'docs')
+        path: path.resolve(__dirname, 'docs/js')
     },
     module: {
         rules: [
