@@ -12,8 +12,6 @@ import image3 from '../images/translate3.jpeg';
 export default class App {
     constructor() {
 
-        console.log(JSON.parse(model))
-
         this.machine = new KNear(4)
 
         this.images = [image0, image1, image2, image3]
@@ -105,9 +103,8 @@ export default class App {
         setTimeout(() => this.drawMosaic(), 100)
     }
 
-    //
+    
     // get a tensor with 100 dimensions, do this every second
-    //
     displayPixelData() {
 
         this.webcamData = []
