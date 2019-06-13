@@ -88,7 +88,7 @@ export default class App {
     trainAI() {
         console.log(this.model)
         for (let item of this.model) {
-            console.log(item)
+            //console.log(item)
             this.machine.learn(item.data, item.label)
         }
         this.labelcam = true
