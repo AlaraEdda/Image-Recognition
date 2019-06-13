@@ -36,7 +36,7 @@ export default class App {
         this.initVideoStream()
 
         this.model
-        this.getModel()
+        //this.getModel()
     }
 
     initSettings() {
@@ -63,7 +63,7 @@ export default class App {
 
     getModel() {
         let _this = this
-        fetch('http://localhost:5500/docs/js/model.json')
+        fetch('http://localhost:5500/docs/js/model2.json')
             .then(function (response) {
                 return response.json()
             })
