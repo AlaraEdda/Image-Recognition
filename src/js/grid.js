@@ -37,6 +37,10 @@ export default class App {
 
         this.model
         //this.getModel()
+
+        let hideButton = document.getElementById("hideTrain").addEventListener('click', function () {
+            document.getElementById('training').style.display = 'none'
+        })
     }
 
     initSettings() {
@@ -128,7 +132,7 @@ export default class App {
         setTimeout(() => this.drawMosaic(), 100)
     }
 
-    
+
     // get a tensor with 100 dimensions, do this every second
     displayPixelData() {
 

@@ -17,10 +17,46 @@
   </header>
   <main>
 
-    <div>
+    <div id="detection">
       <video autoplay=""></video>
       <canvas id="mosaic"></canvas>
       <img id="learned" src="images/waiting.png">
+    </div>
+
+    <container id="training">
+      <div class="flex-item">
+        <h5>Bus</h5>
+        <img src="images/sign0.jpeg"><br>
+        <button class="record">Associate</button>
+        <h5>data</h5>
+        <data class="data"></data>
+      </div>
+      <div class="flex-item">
+        <h5>Metro</h5>
+        <img src="images/sign1.jpeg"><br>
+        <button class="record">Associate</button>
+        <h5>data</h5>
+        <data class="data"></data>
+      </div>
+      <div class="flex-item">
+        <h5>Metrolijn</h5>
+        <img src="images/sign2.jpeg"><br>
+        <button class="record">Associate</button>
+        <h5>data</h5>
+        <data class="data"></data>
+      </div>
+      <div class="flex-item">
+        <h5>Metrokaart</h5>
+        <img src="images/sign3.jpeg"><br>
+        <button class="record">Associate</button>
+        <h5>data</h5>
+        <data class="data"></data>
+      </div>
+    </container>
+
+    <div>
+      <button id="train">START</button>
+      <button id="hideTrain">hide</button>
     </div>
   </main>
 

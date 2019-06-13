@@ -49,6 +49,9 @@ container img {
 video, img {
       width: 340px;
 }
+#detection{
+    margin-bottom: 100px;
+}
 
 canvas {
     image-rendering: optimizeSpeed;
