@@ -60,6 +60,13 @@ canvas {
     border:1px solid black;
 }
 
+#mosaic {
+    display: none;
+    visibility: hidden;
+}
+
+
+
 data {
     display:block;
 }
