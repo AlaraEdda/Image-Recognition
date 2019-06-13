@@ -9,12 +9,10 @@
 </head>
 
 <body>
-  <select name="" id="camera_option">
-  </select>
   <div>
     <video autoplay=""></video>
     <canvas id="mosaic"></canvas>
-    <img id="learned" src="trainingData.png">
+    <img id="learned" src="images/waiting.png">
   </div>
 
   <div>
@@ -26,28 +24,28 @@
   <container>
     <div class="flex-item">
       <h5>Bus</h5>
-      <img src="sign0.jpeg"><br>
+      <img src="images/sign0.jpeg"><br>
       <button class="record">Associate with webcam</button>
       <h5>data</h5>
       <data class="data"></data>
     </div>
     <div class="flex-item">
       <h5>Metro</h5>
-      <img src="sign1.jpeg"><br>
+      <img src="images/sign1.jpeg"><br>
       <button class="record">Associate with webcam</button>
       <h5>data</h5>
       <data class="data"></data>
     </div>
     <div class="flex-item">
       <h5>Metrolijn</h5>
-      <img src="sign2.jpeg"><br>
+      <img src="images/sign2.jpeg"><br>
       <button class="record">Associate with webcam</button>
       <h5>data</h5>
       <data class="data"></data>
     </div>
     <div class="flex-item">
       <h5>Metrokaart</h5>
-      <img src="sign3.jpeg"><br>
+      <img src="images/sign3.jpeg"><br>
       <button class="record">Associate with webcam</button>
       <h5>data</h5>
       <data class="data"></data>
@@ -60,7 +58,9 @@
     <!--<button id="clear">Clear data</button>-->
   </div>
 
+  <script src="js/model.json"></script>
   <script src="js/main.js"></script>
+  <script>JSON.parse(model)</script>
 </body>
 
 </html>

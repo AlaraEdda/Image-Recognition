@@ -2,14 +2,18 @@
 
 import KNear from './knear'
 import Util from "./util"
+import model from './model.js'
 
-import image0 from '../images/sign0.jpeg';
-import image1 from '../images/sign1.jpeg';
-import image2 from '../images/sign2.jpeg';
-import image3 from '../images/sign3.jpeg';
+import image0 from '../images/translate0.jpeg';
+import image1 from '../images/translate1.jpeg';
+import image2 from '../images/translate2.jpeg';
+import image3 from '../images/translate3.jpeg';
 
 export default class App {
     constructor() {
+
+        console.log(JSON.parse(model))
+
         this.machine = new KNear(4)
 
         this.images = [image0, image1, image2, image3]
@@ -29,7 +33,6 @@ export default class App {
         this.intervalid
         this.webcamData
         this.trainingdata = []
-        this.cameraId
 
         // start the stream
         this.initVideoStream()
@@ -136,47 +139,12 @@ export default class App {
             return;
         }
 
-
-
-        // List cameras and microphones.
-        let _this = this
-
-        navigator.mediaDevices.enumerateDevices()
-            .then(function (devices) {
-
-                _this.cameraId = cameraSelect.value
-
-                devices.forEach(function (device) {
-                    if (device.kind === 'videoinput') {
-                        let option = document.createElement('option')
-                        option.innerHTML = device.label
-                        option.value = device.deviceId
-
-                        cameraSelect.add(option)
-                    }
-
-                });
-            })
-            .catch(function (err) {
-                console.log(err.name + ": " + err.message)
-            })
-
-        let cameraSelect = document.getElementById('camera_option')
-        cameraSelect.addEventListener('change', function (e) {
-            this.cameraId = cameraSelect.value
-            console.log(cameraSelect.value)
-            _this.startCamera()
-        })
-
         this.startCamera()
-
-
-
     }
 
     startCamera() {
         if (navigator.mediaDevices) {
-            navigator.mediaDevices.getUserMedia({ video: { deviceId: () => this.cameraId } })
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
                 // permission granted:
                 .then((stream) => {
                     this.video.srcObject = stream;
