@@ -1,3 +1,7 @@
+npm install
+npm def
+npm run build/watch 
+
 # Webcam Detectotron
 
 This is a demo for using a machine learning algorithm to recognise webcam output, written entirely in Javascript. 
