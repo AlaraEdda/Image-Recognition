@@ -2,7 +2,6 @@
 
 import KNear from './knear'
 import Util from "./util"
-import model from './model.js'
 
 import image0 from '../images/translate0.jpeg';
 import image1 from '../images/translate1.jpeg';
@@ -11,8 +10,6 @@ import image3 from '../images/translate3.jpeg';
 
 export default class App {
     constructor() {
-
-        console.log(JSON.parse(model))
 
         this.machine = new KNear(4)
 
@@ -34,8 +31,12 @@ export default class App {
         this.webcamData
         this.trainingdata = []
 
+
         // start the stream
         this.initVideoStream()
+
+        this.model
+        this.getModel()
     }
 
     initSettings() {
@@ -60,6 +61,19 @@ export default class App {
         this.intervalid = setInterval(() => this.displayPixelData(), 1000)
     }
 
+    getModel() {
+        let _this = this
+        fetch('http://localhost:5500/docs/js/model.json')
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (myJson) {
+
+                _this.model = myJson
+                _this.trainAI()
+            })
+    }
+
     initButtons() {
         let btns = document.getElementsByClassName("record")
         for (let i = 0; i < btns.length; i++) {
@@ -69,6 +83,15 @@ export default class App {
             this.labelcam = true
             console.log(JSON.stringify(this.trainingdata))
         })
+    }
+
+    trainAI() {
+        console.log(this.model)
+        for (let item of this.model) {
+            console.log(item)
+            this.machine.learn(item.data, item.label)
+        }
+        this.labelcam = true
     }
 
     recordData(e, i) {
@@ -157,6 +180,7 @@ export default class App {
                 })
         }
     }
+
 }
 
 // init the app
